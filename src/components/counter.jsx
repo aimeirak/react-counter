@@ -5,12 +5,16 @@ class Counter extends Component {
         tags:['tag1','tag2','tag3'],
     };
 
+    // constructor(){
+    //     super();
+    //     this.handleIncrement = this.handleIncrement.bind(this);
+    // }
+
     render() { 
-         
         return (
                 <div className='container'>
                     <span style={{fontSize:15}} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                    <button className='btn btn-secondary btn-sm m-2'>Increment</button>
+                    <button onClick={this.handleIncrement} className='btn btn-secondary btn-sm m-2'>Increment</button>
                     <ul>
                        {this.renderTag()}
                     </ul>
@@ -35,6 +39,9 @@ class Counter extends Component {
         else{
            return this.state.tags.map(tag=> <li key={tag}>{ tag }</li>);
         }
+    }
+    handleIncrement = ()=>{
+       this.setState({ count:this.state.count + 1 });
     }
 }
  
